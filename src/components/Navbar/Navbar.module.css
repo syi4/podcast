@@ -1,0 +1,14 @@
+.container {
+  position: fixed;
+  background-color: black;
+  width: 100%;
+
+  padding: 1.5rem 2.5rem 1.5rem 2.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.link_wrapper > * {
+  margin-left: 2rem;
+}
