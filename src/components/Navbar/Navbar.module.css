@@ -9,6 +9,69 @@
   align-items: center;
 }
 
-.link_wrapper > * {
+.nav_link_wrapper > * {
   margin-left: 2rem;
+}
+
+.nav_link {
+  position: relative;
+}
+
+.nav_link:hover {
+  cursor: pointer;
+  color: burlywood;
+}
+
+.nav_link:hover .nav_link_border {
+  width: 100%;
+  transition: width 300ms;
+  background-color: burlywood;
+}
+
+.nav_link_border {
+  height: 0.1rem;
+  display: inline-block;
+  width: 0;
+  position: absolute;
+  left: 0;
+  bottom: -0.25rem;
+}
+
+.nav_link_border_active {
+  height: 0.1rem;
+  display: inline-block;
+  width: 100%;
+  position: absolute;
+  background-color: white;
+  left: 0;
+  bottom: -0.25rem;
+}
+
+.social_link_wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.social_link_wrapper > * {
+  margin-left: 2rem;
+}
+
+.youtube_icon {
+  width: 2rem;
+}
+
+.instagram_icon,
+.tiktok_icon {
+  width: 1.75rem;
+}
+
+.instagram_icon:hover,
+.tiktok_icon:hover {
+  transform: scale(1.2);
+  transition: ease-in-out 100ms;
+}
+
+.youtube_icon:hover {
+  transform: scale(1.2);
+  transition: ease-in-out 100ms;
 }

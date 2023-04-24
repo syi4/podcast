@@ -1,6 +1,11 @@
 import { FC } from "react";
-import styles from "./Navbar.module.css";
+import { useRouter } from "next/router";
 import Link from "next/link";
+import clsx from "clsx";
+import YoutubeIcon from "../Icons/YoutubeIcon";
+import styles from "./Navbar.module.css";
+import InstagramIcon from "../Icons/InstagramIcon";
+import TikTokIcon from "../Icons/TikTokIcon";
 
 interface PageLink {
   name: string;
@@ -8,7 +13,7 @@ interface PageLink {
 }
 
 interface SocialLink {
-  name: string;
+  icon: JSX.Element;
   link: string;
 }
 
@@ -19,27 +24,46 @@ const pageLinks: PageLink[] = [
 ];
 
 const socialLinks: SocialLink[] = [
-  { name: "Youtube", link: "www.youtube.com" },
-  { name: "Instagram", link: "www.instagram.com" },
-  { name: "TikTok", link: "www.tiktok.com" },
+  {
+    icon: <YoutubeIcon className={styles.youtube_icon} />,
+    link: "https://www.youtube.com",
+  },
+  {
+    icon: <InstagramIcon className={styles.instagram_icon} />,
+    link: "https://www.instagram.com",
+  },
+  {
+    icon: <TikTokIcon className={styles.tiktok_icon} />,
+    link: "https://www.tiktok.com",
+  },
 ];
 
 const Navbar: FC = () => {
+  const router = useRouter();
+
   return (
     <header className={styles.container}>
-      <nav className={styles.link_wrapper}>
+      <nav className={styles.nav_link_wrapper}>
         {pageLinks.map((pageLink, idx) => (
-          <Link key={idx} href={pageLink.link}>
+          <Link key={idx} href={pageLink.link} className={styles.nav_link}>
             {pageLink.name}
+            <span
+              className={clsx(
+                styles.nav_link_border,
+                router.asPath === pageLink.link && styles.nav_link_border_active
+              )}
+            >
+              &nbsp;
+            </span>
           </Link>
         ))}
       </nav>
 
-      <nav className={styles.link_wrapper}>
+      <nav className={styles.social_link_wrapper}>
         {socialLinks.map((socialLink, idx) => (
-          <Link key={idx} href={socialLink.link}>
-            {socialLink.name}
-          </Link>
+          <a key={idx} href={socialLink.link}>
+            {socialLink.icon}
+          </a>
         ))}
       </nav>
     </header>
