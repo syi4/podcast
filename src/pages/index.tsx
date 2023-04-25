@@ -1,20 +1,10 @@
 import Head from "next/head";
 import Image from "next/image";
-import { Inter } from "next/font/google";
 import styles from "~/styles/Home.module.css";
 import Navbar from "~/components/Navbar";
 
-const inter = Inter({ subsets: ["latin"] });
-
-const TallComponent = () => {
-  return (
-    <>
-      {Array.from({ length: 1000 }, (_, i) => (
-        <div key={i}>{i}</div>
-      ))}
-    </>
-  );
-};
+import Layout from "~/components/Layout";
+import homePic from "../../public/home.webp";
 
 export default function Home() {
   return (
@@ -26,9 +16,24 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar />
-      <main className={`${styles.main} ${inter.className}`}>
-        <TallComponent />
-      </main>
+
+      <Layout className={styles.layout}>
+        <main className={styles.main}>
+          <div className={styles.header_container}>
+            <h2 className={styles.header}>hello dsgasdgadsghadsgasdad</h2>
+          </div>
+          <div className={styles.image_container}>
+            <Image
+              src={homePic}
+              alt="Members of the Project Heat Podcast"
+              width="0"
+              height="0"
+              sizes="100vw"
+              className={styles.image}
+            />
+          </div>
+        </main>
+      </Layout>
     </>
   );
 }
